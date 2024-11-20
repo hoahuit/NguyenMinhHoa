@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <title>Nguyen Minh Hoa - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -205,44 +209,252 @@
             z-index: 1;
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); }
-            100% { transform: translate(0, 0); }
-        }
-        
+
         @keyframes pulse {  
             0%, 100% { opacity: 0.3; }
             50% { opacity: 0.7; }
         }
 
-        @media (max-width: 768px) {
+        /* Base styles cho mobile first approach */
+        @media screen and (max-width: 480px) {
+            .hero-content {
+                padding: 0 15px;
+            }
+
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
+                margin-bottom: 10px;
             }
 
             .hero-content h2 {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+                margin-bottom: 15px;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                line-height: 1.6;
                 padding: 15px;
+                margin: 15px auto;
             }
 
             .profile-image {
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
+                margin-bottom: 20px;
             }
 
             .social-links {
-                gap: 15px;
+                gap: 12px;
+                margin-top: 20px;
             }
 
             .social-links a {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Small devices (landscape phones) */
+        @media screen and (min-width: 481px) and (max-width: 767px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .profile-image {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        /* Medium devices (tablets) */
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .profile-image {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        /* Large devices (desktops) */
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        /* Extra large devices (large desktops) */
+        @media screen and (min-width: 1200px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Landscape mode for phones */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .hero-content {
+                padding: 10px;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+
+            .hero-content h2 {
                 font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+
+            .hero-content p {
+                font-size: 0.8rem;
+                margin: 10px auto;
+                line-height: 1.4;
+                padding: 10px;
+            }
+
+            .social-links {
+                margin-top: 10px;
+                gap: 10px;
+            }
+
+            .social-links a {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+
+        /* For high-DPI devices */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero-section {
+                background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80');
+            }
+        }
+
+        /* For devices with hover capability */
+        @media (hover: hover) {
+            .social-links a:hover {
+                transform: translateY(-8px) rotate(360deg);
+            }
+
+            .profile-image:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        /* For touch devices */
+        @media (hover: none) {
+            .social-links a {
+                padding: 12px;
+            }
+
+            .social-links a:active {
+                transform: translateY(-5px);
+            }
+
+            .profile-image:active {
+                transform: scale(1.02);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .hero-section {
+                height: auto;
+                background: none;
+            }
+
+            .hero-overlay {
+                display: none;
+            }
+
+            .hero-content {
+                color: black;
+            }
+
+            .social-links {
+                display: none;
+            }
+        }
+
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Dark mode preferences */
+        @media (prefers-color-scheme: dark) {
+            .hero-content p {
+                background: rgba(255, 255, 255, 0.05);
+            }
+        }
+
+        /* Ensure content is readable on ultra-wide screens */
+        @media screen and (min-width: 2000px) {
+            .hero-content {
+                max-width: 1200px;
+            }
+
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        /* Fix for older browsers */
+        @supports not (gap: 20px) {
+            .social-links a {
+                margin: 0 10px;
             }
         }
     </style>

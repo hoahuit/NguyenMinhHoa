@@ -796,6 +796,32 @@
             // Preload ảnh để tránh delay khi mở lightbox
             const preloadImg = new Image();
             preloadImg.src = profileImage.src;
+
+            // Thiết lập zoom mặc định khi trang web load
+            document.addEventListener('DOMContentLoaded', function() {
+                // Kiểm tra nếu là thiết bị di động
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    // Thiết lập zoom 75% cho thiết bị di động
+                    document.body.style.zoom = "75%";
+                    
+                    // Cho Firefox trên mobile
+                    if (navigator.userAgent.indexOf('Firefox') !== -1) {
+                        document.body.style.transform = "scale(0.75)";
+                        document.body.style.transformOrigin = "0 0";
+                    }
+                } else {
+                    // Thiết lập zoom 70% cho desktop
+                    document.body.style.zoom = "70%";
+                    
+                    // Cho Firefox trên desktop
+                    if (navigator.userAgent.indexOf('Firefox') !== -1) {
+                        document.body.style.transform = "scale(0.7)";
+                        document.body.style.transformOrigin = "0 0";
+                    }
+                }
+            });
         });
 
         function createFloatingElement() {
